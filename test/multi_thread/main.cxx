@@ -4,9 +4,9 @@
 #include <chrono>
 #include <string>
 #include <sstream>
+#include <iterator>
+#include <functional>
 #include "thread_pool.h"
-
-int i, j, k, l;
 
 std::thread::id trivil(int & li, int i, int &&ri) {
 
@@ -17,7 +17,7 @@ std::thread::id trivil(int & li, int i, int &&ri) {
 	ss >> tmp;
 	std::string str = "Thread_ID_" + tmp;
 	std::ofstream os;
-	os.open(str);
+	os.open(str, std::ios::app | std::ios::out);
 	for (int n = 0; n < 1000; ++n) {
 		++li;
 		++i;
@@ -34,15 +34,19 @@ int main(int, char **)
 	
 	ThreadPool<std::thread::id(int &, int, int &&),
 		int &, int, int &&> pool;
-	auto f1 = pool.submit(trivil, i, 0, 0);
-	auto f2 = pool.submit(trivil, j, 0, 0);
-	auto f3 = pool.submit(trivil, k, 0, 0);
-	auto f4 = pool.submit(trivil, l, 0, 0);
-	std::cout << f1.get() << std::endl;
-	std::cout << f2.get() << std::endl;
-	std::cout << f3.get() << std::endl;
-	std::cout << f4.get() << std::endl;
-//	pool.finish();	
 
+	// this code need gcc -O3 & i don't know why
+	std::vector<std::future<std::thread::id>> vec_futures;
+
+	thread_local int i = 0;	
+	for (int i = 0; i < 100; ++i) 
+		vec_futures.push_back(pool.submit(trivil, i, 0, 0));
+
+	for (auto &m : vec_futures) 
+		std::cout << m.get() << std::endl;
+
+	pool.finish();
+
+	std::cout << i << std::endl;
 	return 0;
 }

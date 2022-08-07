@@ -3,6 +3,7 @@
 
 #include <mutex>
 #include <memory>
+#include <thread>
 #include <condition_variable>
 
 template <typename T>
@@ -19,12 +20,15 @@ public:
 	ThreadSafeQueue(const ThreadSafeQueue &) = delete;
 	ThreadSafeQueue &operator=(const ThreadSafeQueue &) = delete;
 
-	// 
+	// interuptable wait and pop 
 	std::shared_ptr<T> wait_and_pop() {
 		std::unique_lock<std::mutex> head_lock(head_mutex_);
 		//std::unique_lock<std::mutex> tail_lock(tail_mutex_);
-		cond_.wait(head_lock, [this](){ 
+		cv_any_.wait(head_lock, stoken_, [this](){ 
 			return this->head_.get() != this->tail_; });
+		if (stoken_.stop_requested()) {
+			throw std::runtime_error("Pop Interrupted.");
+		}
 		//tail_lock.unlock();
 		std::unique_ptr<node> old_head = std::move(head_);
 		head_ = std::move(old_head->next_);
@@ -50,7 +54,8 @@ public:
 		tail_->data_ = new_data;
 		tail_->next_ = std::move(p);
 		tail_ = new_tail;
-		cond_.notify_one();
+		std::lock_guard<std::mutex> cv_any_lock(cv_any_mutex_);
+		cv_any_.notify_one();
 	}
 
 	void push(const T &val) {
@@ -61,7 +66,8 @@ public:
 		tail_->data_ = new_data;
 		tail_->next_ = std::move(p);
 		tail_ = new_tail;
-		cond_.notify_one();
+		std::lock_guard<std::mutex> cv_any_lock(cv_any_mutex_);
+		cv_any_.notify_one();
 	}
 
 private:
@@ -69,9 +75,10 @@ private:
 	// mutex
 	std::mutex head_mutex_;
 	std::mutex tail_mutex_;
+	std::mutex cv_any_mutex_;
 	
 	// condtion variable
-	std::condition_variable cond_;
+	std::condition_variable_any cv_any_;
 
 	// nodes for list
 	std::unique_ptr<node> head_;
