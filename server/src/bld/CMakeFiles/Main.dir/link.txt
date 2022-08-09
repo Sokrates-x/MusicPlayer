@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Main.dir/main.cxx.o -o Main  database/libDatabase.a account/libAccount.a database/libDatabase.a /lib64/libmysqlcppconn.so 

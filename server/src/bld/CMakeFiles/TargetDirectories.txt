@@ -1,0 +1,9 @@
+/home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles/rebuild_cache.dir
+/home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles/edit_cache.dir
+/home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles/Main.dir
+/home/sokrates/GitHub/MusicPlayer/server/src/bld/database/CMakeFiles/rebuild_cache.dir
+/home/sokrates/GitHub/MusicPlayer/server/src/bld/database/CMakeFiles/edit_cache.dir
+/home/sokrates/GitHub/MusicPlayer/server/src/bld/database/CMakeFiles/Database.dir
+/home/sokrates/GitHub/MusicPlayer/server/src/bld/account/CMakeFiles/rebuild_cache.dir
+/home/sokrates/GitHub/MusicPlayer/server/src/bld/account/CMakeFiles/edit_cache.dir
+/home/sokrates/GitHub/MusicPlayer/server/src/bld/account/CMakeFiles/Account.dir
