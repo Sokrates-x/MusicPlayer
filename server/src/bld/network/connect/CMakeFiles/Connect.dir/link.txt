@@ -1,0 +1,2 @@
+/usr/bin/ar qc libConnect.a CMakeFiles/Connect.dir/connect.cxx.o
+/usr/bin/ranlib libConnect.a

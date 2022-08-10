@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sokrates/GitHub/MusicPlayer/server/src
+CMAKE_SOURCE_DIR = /root/github/MusicPlayer/server/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sokrates/GitHub/MusicPlayer/server/src/bld
+CMAKE_BINARY_DIR = /root/github/MusicPlayer/server/src/bld
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -66,17 +66,23 @@ CMAKE_BINARY_DIR = /home/sokrates/GitHub/MusicPlayer/server/src/bld
 all: CMakeFiles/Main.dir/all
 all: database/all
 all: account/all
+all: multi_thread/all
+all: network/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: database/preinstall
 preinstall: account/preinstall
+preinstall: multi_thread/preinstall
+preinstall: network/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/Main.dir/clean
 clean: database/clean
 clean: account/clean
+clean: multi_thread/clean
+clean: network/clean
 .PHONY : clean
 
 #=============================================================================
@@ -110,21 +116,119 @@ database/clean: database/CMakeFiles/Database.dir/clean
 .PHONY : database/clean
 
 #=============================================================================
+# Directory level rules for directory multi_thread
+
+# Recursive "all" directory target.
+multi_thread/all: multi_thread/thread_safe_queue/all
+multi_thread/all: multi_thread/thread_pool/all
+.PHONY : multi_thread/all
+
+# Recursive "preinstall" directory target.
+multi_thread/preinstall: multi_thread/thread_safe_queue/preinstall
+multi_thread/preinstall: multi_thread/thread_pool/preinstall
+.PHONY : multi_thread/preinstall
+
+# Recursive "clean" directory target.
+multi_thread/clean: multi_thread/thread_safe_queue/clean
+multi_thread/clean: multi_thread/thread_pool/clean
+.PHONY : multi_thread/clean
+
+#=============================================================================
+# Directory level rules for directory multi_thread/thread_pool
+
+# Recursive "all" directory target.
+multi_thread/thread_pool/all:
+.PHONY : multi_thread/thread_pool/all
+
+# Recursive "preinstall" directory target.
+multi_thread/thread_pool/preinstall:
+.PHONY : multi_thread/thread_pool/preinstall
+
+# Recursive "clean" directory target.
+multi_thread/thread_pool/clean:
+.PHONY : multi_thread/thread_pool/clean
+
+#=============================================================================
+# Directory level rules for directory multi_thread/thread_safe_queue
+
+# Recursive "all" directory target.
+multi_thread/thread_safe_queue/all:
+.PHONY : multi_thread/thread_safe_queue/all
+
+# Recursive "preinstall" directory target.
+multi_thread/thread_safe_queue/preinstall:
+.PHONY : multi_thread/thread_safe_queue/preinstall
+
+# Recursive "clean" directory target.
+multi_thread/thread_safe_queue/clean:
+.PHONY : multi_thread/thread_safe_queue/clean
+
+#=============================================================================
+# Directory level rules for directory network
+
+# Recursive "all" directory target.
+network/all: network/boot/all
+network/all: network/connect/all
+.PHONY : network/all
+
+# Recursive "preinstall" directory target.
+network/preinstall: network/boot/preinstall
+network/preinstall: network/connect/preinstall
+.PHONY : network/preinstall
+
+# Recursive "clean" directory target.
+network/clean: network/boot/clean
+network/clean: network/connect/clean
+.PHONY : network/clean
+
+#=============================================================================
+# Directory level rules for directory network/boot
+
+# Recursive "all" directory target.
+network/boot/all: network/boot/CMakeFiles/Network.dir/all
+.PHONY : network/boot/all
+
+# Recursive "preinstall" directory target.
+network/boot/preinstall:
+.PHONY : network/boot/preinstall
+
+# Recursive "clean" directory target.
+network/boot/clean: network/boot/CMakeFiles/Network.dir/clean
+.PHONY : network/boot/clean
+
+#=============================================================================
+# Directory level rules for directory network/connect
+
+# Recursive "all" directory target.
+network/connect/all: network/connect/CMakeFiles/Connect.dir/all
+.PHONY : network/connect/all
+
+# Recursive "preinstall" directory target.
+network/connect/preinstall:
+.PHONY : network/connect/preinstall
+
+# Recursive "clean" directory target.
+network/connect/clean: network/connect/CMakeFiles/Connect.dir/clean
+.PHONY : network/connect/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/Main.dir
 
 # All Build rule for target.
 CMakeFiles/Main.dir/all: database/CMakeFiles/Database.dir/all
 CMakeFiles/Main.dir/all: account/CMakeFiles/Account.dir/all
+CMakeFiles/Main.dir/all: network/boot/CMakeFiles/Network.dir/all
+CMakeFiles/Main.dir/all: network/connect/CMakeFiles/Connect.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles --progress-num=5,6 "Built target Main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/github/MusicPlayer/server/src/bld/CMakeFiles --progress-num=7,8 "Built target Main"
 .PHONY : CMakeFiles/Main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 0
 .PHONY : CMakeFiles/Main.dir/rule
 
 # Convenience name for target.
@@ -143,14 +247,14 @@ CMakeFiles/Main.dir/clean:
 database/CMakeFiles/Database.dir/all:
 	$(MAKE) $(MAKESILENT) -f database/CMakeFiles/Database.dir/build.make database/CMakeFiles/Database.dir/depend
 	$(MAKE) $(MAKESILENT) -f database/CMakeFiles/Database.dir/build.make database/CMakeFiles/Database.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles --progress-num=3,4 "Built target Database"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/github/MusicPlayer/server/src/bld/CMakeFiles --progress-num=5,6 "Built target Database"
 .PHONY : database/CMakeFiles/Database.dir/all
 
 # Build rule for subdir invocation for target.
 database/CMakeFiles/Database.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 database/CMakeFiles/Database.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 0
 .PHONY : database/CMakeFiles/Database.dir/rule
 
 # Convenience name for target.
@@ -169,14 +273,14 @@ database/CMakeFiles/Database.dir/clean:
 account/CMakeFiles/Account.dir/all: database/CMakeFiles/Database.dir/all
 	$(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/depend
 	$(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles --progress-num=1,2 "Built target Account"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/github/MusicPlayer/server/src/bld/CMakeFiles --progress-num=1,2 "Built target Account"
 .PHONY : account/CMakeFiles/Account.dir/all
 
 # Build rule for subdir invocation for target.
 account/CMakeFiles/Account.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/CMakeFiles/Account.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 0
 .PHONY : account/CMakeFiles/Account.dir/rule
 
 # Convenience name for target.
@@ -187,6 +291,58 @@ Account: account/CMakeFiles/Account.dir/rule
 account/CMakeFiles/Account.dir/clean:
 	$(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/clean
 .PHONY : account/CMakeFiles/Account.dir/clean
+
+#=============================================================================
+# Target rules for target network/boot/CMakeFiles/Network.dir
+
+# All Build rule for target.
+network/boot/CMakeFiles/Network.dir/all:
+	$(MAKE) $(MAKESILENT) -f network/boot/CMakeFiles/Network.dir/build.make network/boot/CMakeFiles/Network.dir/depend
+	$(MAKE) $(MAKESILENT) -f network/boot/CMakeFiles/Network.dir/build.make network/boot/CMakeFiles/Network.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/github/MusicPlayer/server/src/bld/CMakeFiles --progress-num=9,10 "Built target Network"
+.PHONY : network/boot/CMakeFiles/Network.dir/all
+
+# Build rule for subdir invocation for target.
+network/boot/CMakeFiles/Network.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 network/boot/CMakeFiles/Network.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 0
+.PHONY : network/boot/CMakeFiles/Network.dir/rule
+
+# Convenience name for target.
+Network: network/boot/CMakeFiles/Network.dir/rule
+.PHONY : Network
+
+# clean rule for target.
+network/boot/CMakeFiles/Network.dir/clean:
+	$(MAKE) $(MAKESILENT) -f network/boot/CMakeFiles/Network.dir/build.make network/boot/CMakeFiles/Network.dir/clean
+.PHONY : network/boot/CMakeFiles/Network.dir/clean
+
+#=============================================================================
+# Target rules for target network/connect/CMakeFiles/Connect.dir
+
+# All Build rule for target.
+network/connect/CMakeFiles/Connect.dir/all:
+	$(MAKE) $(MAKESILENT) -f network/connect/CMakeFiles/Connect.dir/build.make network/connect/CMakeFiles/Connect.dir/depend
+	$(MAKE) $(MAKESILENT) -f network/connect/CMakeFiles/Connect.dir/build.make network/connect/CMakeFiles/Connect.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/github/MusicPlayer/server/src/bld/CMakeFiles --progress-num=3,4 "Built target Connect"
+.PHONY : network/connect/CMakeFiles/Connect.dir/all
+
+# Build rule for subdir invocation for target.
+network/connect/CMakeFiles/Connect.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 network/connect/CMakeFiles/Connect.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 0
+.PHONY : network/connect/CMakeFiles/Connect.dir/rule
+
+# Convenience name for target.
+Connect: network/connect/CMakeFiles/Connect.dir/rule
+.PHONY : Connect
+
+# clean rule for target.
+network/connect/CMakeFiles/Connect.dir/clean:
+	$(MAKE) $(MAKESILENT) -f network/connect/CMakeFiles/Connect.dir/build.make network/connect/CMakeFiles/Connect.dir/clean
+.PHONY : network/connect/CMakeFiles/Connect.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

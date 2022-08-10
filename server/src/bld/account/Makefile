@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sokrates/GitHub/MusicPlayer/server/src
+CMAKE_SOURCE_DIR = /root/github/MusicPlayer/server/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sokrates/GitHub/MusicPlayer/server/src/bld
+CMAKE_BINARY_DIR = /root/github/MusicPlayer/server/src/bld
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(CMAKE_COMMAND) -E cmake_progress_start /home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles /home/sokrates/GitHub/MusicPlayer/server/src/bld/account//CMakeFiles/progress.marks
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sokrates/GitHub/MusicPlayer/server/src/bld/CMakeFiles 0
+	cd /root/github/MusicPlayer/server/src/bld && $(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles /root/github/MusicPlayer/server/src/bld/account//CMakeFiles/progress.marks
+	cd /root/github/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/github/MusicPlayer/server/src/bld/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/clean
+	cd /root/github/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/preinstall
+	cd /root/github/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/preinstall
+	cd /root/github/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/github/MusicPlayer/server/src/bld && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 account/CMakeFiles/Account.dir/rule:
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/CMakeFiles/Account.dir/rule
+	cd /root/github/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 account/CMakeFiles/Account.dir/rule
 .PHONY : account/CMakeFiles/Account.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ Account: account/CMakeFiles/Account.dir/rule
 
 # fast build rule for target.
 Account/fast:
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/build
+	cd /root/github/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/build
 .PHONY : Account/fast
 
 account.o: account.cxx.o
@@ -135,7 +135,7 @@ account.o: account.cxx.o
 
 # target to build an object file
 account.cxx.o:
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/account.cxx.o
+	cd /root/github/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/account.cxx.o
 .PHONY : account.cxx.o
 
 account.i: account.cxx.i
@@ -143,7 +143,7 @@ account.i: account.cxx.i
 
 # target to preprocess a source file
 account.cxx.i:
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/account.cxx.i
+	cd /root/github/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/account.cxx.i
 .PHONY : account.cxx.i
 
 account.s: account.cxx.s
@@ -151,7 +151,7 @@ account.s: account.cxx.s
 
 # target to generate assembly for a file
 account.cxx.s:
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/account.cxx.s
+	cd /root/github/MusicPlayer/server/src/bld && $(MAKE) $(MAKESILENT) -f account/CMakeFiles/Account.dir/build.make account/CMakeFiles/Account.dir/account.cxx.s
 .PHONY : account.cxx.s
 
 # Help Target
@@ -177,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/sokrates/GitHub/MusicPlayer/server/src/bld && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/github/MusicPlayer/server/src/bld && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

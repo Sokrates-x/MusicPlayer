@@ -5,21 +5,22 @@
 #include <iostream>
 #include <functional>
 #include <iterator>
+#include <utility>
 
 template <typename... Args>
-std::string DataBase::package_(Args...) {
+std::string DataBase::package_(Args&&...) {
 	throw std::runtime_error("Invalid Input in DataBase::package_()\
 		parms. must be const char * or const std::string &");
 }
 
 template <typename... Args>
-std::string DataBase::package_(const std::string &str, Args... args) {
-	return str + " " + package_(args...);	
+std::string DataBase::package_(const std::string &str, Args&&... args) {
+	return str + " " + package_(std::forward<Args>(args)...);	
 }
 
 template <typename... Args>
-std::string DataBase::package_(const char *str, Args... args) {
-	return std::string(str) + " " + package_(args...);	
+std::string DataBase::package_(const char *str, Args&&... args) {
+	return std::string(str) + " " + package_(std::forward<Args>(args)...);	
 }
 
 std::string DataBase::package_(const std::string &str) {
@@ -32,9 +33,9 @@ std::string DataBase::package_(const char *str) {
 
 // add to table
 template <typename... Args>
-int DataBase::insert(Args... args) {
+int DataBase::insert(Args&&... args) {
 
-	std::string str = package_(args...);
+	std::string str = package_(std::forward<Args>(args)...);
 	std::istringstream in(str);
 
 	std::string	name, val;
@@ -77,8 +78,8 @@ int DataBase::insert(Args... args) {
 }
 
 template <typename... Args>
-std::string DataBase::get(const std::string &what, Args... args){
-	std::string str = package_(args...);
+std::string DataBase::get(const std::string &what, Args&&... args){
+	std::string str = package_(std::forward<Args>(args)...);
 	std::istringstream in(str);
 	std::string sstr = "SELECT " + what + " FROM " + table_name_ + 
 		" WHERE ";

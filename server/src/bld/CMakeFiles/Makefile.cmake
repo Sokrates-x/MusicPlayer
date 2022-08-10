@@ -13,6 +13,12 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.20.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.20.2/CMakeSystem.cmake"
   "../database/CMakeLists.txt"
+  "../multi_thread/CMakeLists.txt"
+  "../multi_thread/thread_pool/CMakeLists.txt"
+  "../multi_thread/thread_safe_queue/CMakeLists.txt"
+  "../network/CMakeLists.txt"
+  "../network/boot/CMakeLists.txt"
+  "../network/connect/CMakeLists.txt"
   "/usr/share/cmake/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
@@ -43,6 +49,12 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "database/CMakeFiles/CMakeDirectoryInformation.cmake"
   "account/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "multi_thread/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "multi_thread/thread_safe_queue/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "multi_thread/thread_pool/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "network/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "network/boot/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "network/connect/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -50,4 +62,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Main.dir/DependInfo.cmake"
   "database/CMakeFiles/Database.dir/DependInfo.cmake"
   "account/CMakeFiles/Account.dir/DependInfo.cmake"
+  "network/boot/CMakeFiles/Network.dir/DependInfo.cmake"
+  "network/connect/CMakeFiles/Connect.dir/DependInfo.cmake"
   )

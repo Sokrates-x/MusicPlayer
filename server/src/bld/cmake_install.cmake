@@ -1,4 +1,4 @@
-# Install script for directory: /home/sokrates/GitHub/MusicPlayer/server/src
+# Install script for directory: /root/github/MusicPlayer/server/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,8 +44,10 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/sokrates/GitHub/MusicPlayer/server/src/bld/database/cmake_install.cmake")
-  include("/home/sokrates/GitHub/MusicPlayer/server/src/bld/account/cmake_install.cmake")
+  include("/root/github/MusicPlayer/server/src/bld/database/cmake_install.cmake")
+  include("/root/github/MusicPlayer/server/src/bld/account/cmake_install.cmake")
+  include("/root/github/MusicPlayer/server/src/bld/multi_thread/cmake_install.cmake")
+  include("/root/github/MusicPlayer/server/src/bld/network/cmake_install.cmake")
 
 endif()
 
@@ -57,5 +59,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sokrates/GitHub/MusicPlayer/server/src/bld/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/root/github/MusicPlayer/server/src/bld/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

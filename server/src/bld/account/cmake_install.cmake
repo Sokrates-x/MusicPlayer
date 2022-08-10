@@ -1,4 +1,4 @@
-# Install script for directory: /home/sokrates/GitHub/MusicPlayer/server/src/account
+# Install script for directory: /root/github/MusicPlayer/server/src/account
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,0 +1,58 @@
+#include "thread_safe_queue.h"
+
+#include <exception>
+
+template <typename T>
+std::shared_ptr<T> ThreadSafeQueue<T>::wait_and_pop(std::stop_token st) {
+	std::unique_lock<std::mutex> head_lock(head_mutex_);
+	// no need to lock tail amoung existing interfaces
+	//std::unique_lock<std::mutex> tail_lock(tail_mutex_);
+	cv_any_.wait(head_lock, st, [this](){ 
+		return this->head_.get() != this->tail_; });
+	if (st.stop_requested()) {
+		throw std::runtime_error("Pop Interrupted.");
+	}
+	//tail_lock.unlock();
+	std::unique_ptr<node> old_head = std::move(head_);
+	head_ = std::move(old_head->next_);
+	return old_head->data_;
+}
+
+template <typename T>
+std::shared_ptr<T> ThreadSafeQueue<T>::try_pop() {
+	std::lock_guard<std::mutex> head_lock(head_mutex_);
+	// no need to lock tail amoung existing interfaces
+	//std::unique_lock<std::mutex> tail_lock(tail_mutex_);
+	if (head_.get() == tail_)
+		return std::shared_ptr<T>();
+	//tail_lock.unlock();
+	std::unique_ptr<node> old_head = std::move(head_);
+	head_ = std::move(old_head->next_);
+	return old_head->data_;
+}
+
+template <typename T>
+void ThreadSafeQueue<T>::push(T &&val) {
+	std::shared_ptr<T> new_data(std::make_shared<T>(std::move(val)));
+	std::unique_ptr<node> p(new node);
+	node * const new_tail = p.get();
+	std::lock_guard<std::mutex> tail_lock(tail_mutex_);
+	tail_->data_ = new_data;
+	tail_->next_ = std::move(p);
+	tail_ = new_tail;
+	//std::lock_guard<std::mutex> cv_any_lock(cv_any_mutex_);
+	cv_any_.notify_one();
+}
+
+template <typename T>
+void ThreadSafeQueue<T>::push(const T &val) {
+	std::shared_ptr<T> new_data(std::make_shared<T>(val));
+	std::unique_ptr<node> p(new node);
+	node * const new_tail = p.get();
+	std::lock_guard<std::mutex> tail_lock(tail_mutex_);
+	tail_->data_ = new_data;
+	tail_->next_ = std::move(p);
+	tail_ = new_tail;
+	//std::lock_guard<std::mutex> cv_any_lock(cv_any_mutex_);
+	cv_any_.notify_one();
+}

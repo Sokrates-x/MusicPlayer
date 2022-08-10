@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sokrates/GitHub/MusicPlayer/server/src/bld -I/home/sokrates/GitHub/MusicPlayer/server/src -I/usr/include/mysql-cppconn/mysql -I/home/sokrates/GitHub/MusicPlayer/server/src/database -I/home/sokrates/GitHub/MusicPlayer/server/src/account
+CXX_INCLUDES = -I/root/github/MusicPlayer/server/src/bld -I/root/github/MusicPlayer/server/src -I/usr/include/mysql-cppconn/mysql -I/root/github/MusicPlayer/server/src/database -I/root/github/MusicPlayer/server/src/account -I/root/github/MusicPlayer/server/src/multi_thread/thread_pool -I/root/github/MusicPlayer/server/src/multi_thread/thread_safe_queue -I/root/github/MusicPlayer/server/src/network/boot -I/root/github/MusicPlayer/server/src/network/connect
 
 CXX_FLAGS = -std=gnu++2a
 
